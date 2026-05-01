@@ -57,7 +57,10 @@ import(URBAN_ROUTES_URL)
         # Adicionar em S8
 
         print("função para pedir 2 sorvetes")
-        pass
+
+        for _ in range(2):
+            # Adicionar em S8
+            pass
 
     def test_car_search_model_appears(self):
        # Adicionar em S8
