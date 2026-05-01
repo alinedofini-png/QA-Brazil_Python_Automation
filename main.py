@@ -1,7 +1,22 @@
 import data.py
+import helpers.py
+
+from helpers
+import(is_url_reachable)
+
+from data
+import(URBAN_ROUTES_URL)
 
 
-class TestUrbanRoutes:
+    class TestUrbanRoutes:
+    @classmethod
+    def setup_class(cls):
+        if helpers.is_url_reachable(data.URBAN_ROUTES_URL):
+            print("Conectado ao servidor Urban Routes")
+        else:
+            print("Não foi possível conectar ao Urban Routes. Verifique se o servidor está ligado e ainda em execução.")
+
+    class TestUrbanRoutes:
     def test_set_route(self):
         # Adicionar em S8
 
@@ -49,5 +64,16 @@ class TestUrbanRoutes:
 
        print("função para procurar modelo do carro")
        pass
+
+
+
+     if helpers.is_url_reachable(https://cnt-5d85119d-d0dd-472a-a31c-be577c01190d.containerhub.tripleten-services.com/):
+     print("Conectado ao servidor Urban Routes")
+
+     else:
+     print("Não foi possível conectar ao Urban Routes. Verifique se o servidor está ligado e ainda em execução.")
+
+
+
 
 
