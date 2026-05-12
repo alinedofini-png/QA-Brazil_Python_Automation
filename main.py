@@ -82,7 +82,9 @@ import(URBAN_ROUTES_URL)
      else:
      print("Não foi possível conectar ao Urban Routes. Verifique se o servidor está ligado e ainda em execução.")
 
-
+    @classmethod
+    def teardown_class(cls):
+        cls.driver.quit()
 
 
 
