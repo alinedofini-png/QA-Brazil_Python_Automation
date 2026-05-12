@@ -16,6 +16,12 @@ import(URBAN_ROUTES_URL)
         else:
             print("Não foi possível conectar ao Urban Routes. Verifique se o servidor está ligado e ainda em execução.")
 
+        from selenium.webdriver import DesiredCapabilities
+            capabilities = DesiredCapabilities.CHROME
+            capabilities["goog:loggingPrefs"] = {'performance': 'ALL'}
+            cls.driver = webdriver.Chrome()
+
+
     class TestUrbanRoutes:
     def test_set_route(self):
         # Adicionar em S8
