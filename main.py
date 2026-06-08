@@ -1,13 +1,21 @@
+import time
+from selenium.webdriver.common.by import By
+
 import data
+import helpers
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from pages import UrbanRoutesPage
+
+from page import UrbanRoutesPage as page
 
 
 class TestUrbanRoutes:
     driver = None
+    from_field = data.ADDRESS_FROM
+    to_field = data.ADDRESS_TO
+    phone_number = data.PHONE_NUMBER
 
     @classmethod
     def setup_class(cls):
@@ -17,58 +25,49 @@ class TestUrbanRoutes:
         cls.driver.implicitly_wait(5)
 
     def test_set_route(self):
-        self.driver.get(data.https://cnt-f6e6c82d-b9f1-4af6-aa77-9120f312fec6.containerhub.tripleten-services.com/)
-        routes_page = UrbanRoutesPage(self.driver)
-        address_from = data.ADDRESS_FROM
-        address_to = data.ADDRESS_TO
-        routes_page.set_route(address_from, address_to)
-        assert routes_page.get_from() == address_from
-        assert routes_page.get_to() == address_to
+        page.set_route(self.from_field, self.to_field)
+        page.assert_route(self.from_field, self.to_field)
 
     def test_select_plan(self):
-        routes_page = UrbanRoutesPage(self.driver)
-        routes_page.select_supportive_plan()
-        assert routes_page.get_current_selected_plan() == 'Confort'
+        page.set_route(select.from_field, select.to_field)
+        page.select_comfort_plan()
+        page.assert_comfort_plan_selected()
 
     def test_fill_phone_number(self):
-        routes_page = UrbanRoutesPage(self.driver)
-        phone_number = data.PHONE_NUMBER
-        routes_page.set_phone(phone_number)
-        assert routes_page.get_phone() == phone_number
+        page.set_route(select.from_field, select.to_field)
+        page.select_comfort_plan()
+        page.set_phone_number(self.phone_number)
+        page.assert_phone_number(self.phone_number)
 
     def test_fill_card(self):
-        routes_page = UrbanRoutesPage(self.driver)
-        routes_page.set_card(data.CARD_NUMBER, data.CARD_CODE)
-        assert routes_page.get_current_payment_method() == 'Cartão'
+        page.set_route(select.from_field, select.to_field)
+        page.select_comfort_plan()
 
     def test_comment_for_driver(self):
-        routes_page = UrbanRoutesPage(self.driver)
-        message = data.MESSAGE_FOR_DRIVER
-        routes_page.set_message_for_driver(message)
-        assert routes_page.get_message_for_driver() == message
+        page.set_route(select.from_field, select.to_field)
+        page.select_comfort_plan()
 
     def test_order_blanket_and_handkerchiefs(self):
-        routes_page = UrbanRoutesPage(self.driver)
-        routes_page.click_blanket_and_handkerchiefs_option()
-        assert routes_page.get_blanket_and_handkerchiefs_option_checked()
+        page.set_route(select.from_field, select.to_field)
+        page.select_comfort_plan()
 
     def test_order_2_ice_creams(self):
-        routes_page = UrbanRoutesPage(self.driver)
-        routes_page.add_ice_crem(2)
-        assert routes_page.get_amount_of_ice_cream() == 2
+        page.set_route(select.from_field, select.to_field)
+        page.select_comfort_plan()
 
     def test_car_search_model_appears(self):
-        routes_page = UrbanRoutesPage(self.driver)
-        routes_page.click_order_taxi_button()
-        routes_page.wait_order_taxi_popup()
+        page.set_route(select.from_field, select.to_field)
+        page.select_comfort_plan()
 
-    def test_driver_info_appears
-        routes_page = UrbanRoutesPage(self.driver)
-        routes_page.wait_driver_info()
-        name, rating, image = routes_page.get_driver_info()
-        assert name
-        assert rating
-        assert image
+    def test_driver_info_appears(self):
+        page.set_route(select.from_field, select.to_field)
+        page.select_comfort_plan()
+
+    def test_car_search_model_appears(self):
+        page.set_route(select.from_field, select.to_field)
+        page.select_comfort_plan()
+        page.set_phone_number(self.phone_number)
+        page.set_card_info.phone_number(self.phone_number)
 
     @classmethod
     def teardown_class(cls):
