@@ -227,7 +227,8 @@ class UrbanRoutesPage:
         # ============================
     def wait_main_screen(self):
         pedir_button = (By.XPATH, "//button[contains(text(),'Pedir')]")
-        self.wait.until(EC.visibility_of_element_located('pedir_button'))
+        self.wait.until(EC.visibility_of_element_located('pedir_button')).venv\lib\site-packages\selenium\webdriver\support\wait.py:96: in until
+        value = method(self._driver)
 
     def wait_comment_field(self):
         self.wait.until(

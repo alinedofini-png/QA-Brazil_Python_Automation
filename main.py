@@ -134,7 +134,7 @@ class TestUrbanRoutes:
         time.sleep(1)
 
         # ✅ Método correto
-        page.set_message_for_driver(self.MESSAGE_FOR_DRIVER)
+        page.set_message_for_driver(MESSAGE_FOR_DRIVER)
         time.sleep(1)
 
         # ✅ Assert via getter, não page_source
